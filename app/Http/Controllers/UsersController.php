@@ -12,7 +12,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return "good";
+        $users = User::get();
+        return view('index', compact('users'));
     }
 
     /**
@@ -20,7 +21,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -28,7 +29,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return '';
     }
 
     /**
@@ -36,7 +37,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('show');
     }
 
     /**
@@ -44,7 +45,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('form', compact($user));
     }
 
     /**
