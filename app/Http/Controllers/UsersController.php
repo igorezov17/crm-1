@@ -21,7 +21,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('form');
     }
 
     /**
@@ -29,7 +29,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        return '';
+        User::create($request->only(['name', 'email']));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('form', compact($user));
+        return view('form', compact('user'));
     }
 
     /**
@@ -53,7 +54,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->only('name', 'email'));
+        return redirect()->route('users.index');
     }
 
     /**
